@@ -8,8 +8,20 @@ module.exports = {
     output: {
         filename: '[name].[contenthash].js',
     },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './dist',
+    },
     plugins: [new HtmlWebpackPlugin({
         title: 'simple_ice',
         template: 'src/assets/index.html'
-    })]
+    })],
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+        ],
+    }
 };
